@@ -61,9 +61,3 @@ nvm use $nodeLtsVersion
 Remove-Variable nodeLtsVersion
 
 gem pristine --all --env-shebang
-### Janus for vim
-Write-Host "Installing Janus..." -ForegroundColor "Yellow"
-if ((which curl) -and (which vim) -and (which rake) -and (which bash)) {
-    curl.exe -L https://bit.ly/janus-bootstrap | bash
-}
-
