@@ -61,16 +61,6 @@ nvm use $nodeLtsVersion
 Remove-Variable nodeLtsVersion
 
 gem pristine --all --env-shebang
-### Node Packages
-Write-Host "Installing Node Packages..." -ForegroundColor "Yellow"
-if (which npm) {
-    npm update npm
-    npm install -g gulp
-    npm install -g mocha
-    npm install -g node-inspector
-    npm install -g yo
-}
-
 ### Janus for vim
 Write-Host "Installing Janus..." -ForegroundColor "Yellow"
 if ((which curl) -and (which vim) -and (which rake) -and (which bash)) {
