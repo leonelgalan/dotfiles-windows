@@ -48,7 +48,7 @@ choco install ruby                --limit-output
 
 
 # dev tools and frameworks
-choco install atom                --limit-output; <# pin; evergreen #> choco pin add --name Atom                --limit-output
+choco install vscode              --limit-output
 choco install Fiddler             --limit-output
 choco install vim                 --limit-output
 choco install winmerge            --limit-output
