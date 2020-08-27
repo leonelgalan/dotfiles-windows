@@ -50,7 +50,6 @@ choco install ruby                --limit-output
 # dev tools and frameworks
 choco install vscode              --limit-output
 choco install Fiddler             --limit-output
-choco install vim                 --limit-output
 choco install winmerge            --limit-output
 
 Refresh-Environment
