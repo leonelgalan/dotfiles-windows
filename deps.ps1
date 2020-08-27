@@ -24,7 +24,7 @@ Get-PackageProvider NuGet -Force | Out-Null
 
 ### Install PowerShell Modules
 Write-Host "Installing PowerShell Modules..." -ForegroundColor "Yellow"
-Install-Module Posh-Git -Scope CurrentUser -Force
+Install-Module posh-git -Scope CurrentUser -Force
 Install-Module oh-my-posh -Scope CurrentUser
 Install-Module PSWindowsUpdate -Scope CurrentUser -Force
 
