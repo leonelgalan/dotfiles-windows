@@ -1,8 +1,8 @@
-﻿# Jay Harris's dotfiles for Windows
+﻿# Leonel's dotfiles for Windows
 
 A collection of PowerShell files for Windows, including common application installation through `Chocolatey` and `npm`, and developer-minded Windows configuration defaults. 
 
-Are you a Mac user? Check out my [dotfiles](https://github.com/jayharris/dotfiles) repository.
+Completely based in Jay Harris's own _dotfiles-windows_.
 
 ## Installation
 
@@ -12,7 +12,7 @@ You can clone the repository wherever you want. (I like to keep it in `~\Project
 
 From PowerShell:
 ```posh
-git clone https://github.com/jayharris/dotfiles-windows.git; cd dotfiles-windows; . .\bootstrap.ps1
+git clone https://github.com/leonelgalan/dotfiles-windows.git; cd dotfiles-windows; . .\bootstrap.ps1
 ```
 
 To update your settings, `cd` into your local `dotfiles-windows` repository within PowerShell and then:
@@ -30,7 +30,7 @@ Note: You must have your execution policy set to unrestricted (or at least in by
 To install these dotfiles from PowerShell without Git:
 
 ```bash
-iex ((new-object net.webclient).DownloadString('https://raw.github.com/jayharris/dotfiles-windows/master/setup/install.ps1'))
+iex ((new-object net.webclient).DownloadString('https://raw.github.com/leonelgalan/dotfiles-windows/master/setup/install.ps1'))
 ```
 
 To update later on, just run that command again.
@@ -42,25 +42,25 @@ If `.\extra.ps1` exists, it will be sourced along with the other files. You can 
 My `.\extra.ps1` looks something like this:
 
 ```posh
-# Hg credentials
-# Not in the repository, to prevent people from accidentally committing under my name
-Set-Environment "EMAIL" "Jay Harris <jay@aranasoft.com>"
-
 # Git credentials
 # Not in the repository, to prevent people from accidentally committing under my name
-Set-Environment "GIT_AUTHOR_NAME" "Jay Harris","User"
+Set-Environment "GIT_AUTHOR_NAME" "Leonel Galan"
 Set-Environment "GIT_COMMITTER_NAME" $env:GIT_AUTHOR_NAME
 git config --global user.name $env:GIT_AUTHOR_NAME
-Set-Environment "GIT_AUTHOR_EMAIL" "jay@aranasoft.com"
+Set-Environment "GIT_AUTHOR_EMAIL" "leonelgalan@gmail.com"
 Set-Environment "GIT_COMMITTER_EMAIL" $env:GIT_AUTHOR_EMAIL
 git config --global user.email $env:GIT_AUTHOR_EMAIL
+
+Import-Module posh-git
+Import-Module oh-my-posh
+Set-Theme Paradox
 ```
 
 Extras is designed to augment the existing settings and configuration. You could also use `./extra.ps1` to override settings, functions and aliases from my dotfiles repository, but it is probably better to [fork this repository](#forking-your-own-version).
 
 ### Sensible Windows defaults
 
-When setting up a new Windows PC, you may want to set some Windows defaults and features, such as showing hidden files in Windows Explorer and installing IIS. This will also set your machine name and full user name, so you may want to modify this file before executing.
+When setting up a new Windows PC, you may want to set some Windows defaults and features, such as showing hidden files in Windows Explorer. This will also set your machine name and full user name, so you may want to modify this file before executing.
 
 ```post
 .\windows.ps1
@@ -68,28 +68,25 @@ When setting up a new Windows PC, you may want to set some Windows defaults and 
 
 ### Install dependencies and packages
 
-When setting up a new Windows box, you may want to install some common packages, utilities, and dependencies. These could include node.js packages via [NPM](https://www.npmjs.org), [Chocolatey](http://chocolatey.org/) packages, Windows Features and Tools via [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx), and Visual Studio Extensions from the [Visual Studio Gallery](http://visualstudiogallery.msdn.microsoft.com/).
+When setting up a new Windows box, you may want to install some common packages, utilities, and dependencies. These could include node.js, [Chocolatey](http://chocolatey.org/) packages, Windows Features and Tools via [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx), and Visual Studio Extensions from the [Visual Studio Gallery](http://visualstudiogallery.msdn.microsoft.com/).
 
 ```posh
 .\deps.ps1
 ```
 
-> The scripts will install Chocolatey, node.js, and WebPI if necessary.
+> The scripts will install Chocolatey, node.js, ruby and python if necessary.
 
 > **Visual Studio Extensions**  
 > Extensions will be installed into your most current version of Visual Studio. You can also install additional plugins at any time via `Install-VSExtension $url`. The Url can be found on the gallery; it's the extension's `Download` link url.
 
 
-
 ## Forking your own version
-
-This repository is built around how I use Windows, which is predominantly in a VM hosted on OS X. As such, things like VNC, FileZilla, or Skype are not installed, as they are available to me on the OS X side, installed by my [OS X dotfiles](https://github.com/jayharris/dotfiles). If you are using Windows as your primary OS, you may want a different configuration that reflects that, and I recommend you [fork this repository](https://github.com/jayharris/dotfiles-windows/fork).
 
 If you do fork for your own custom configuration, you will need to touch a few files to reference your own repository, instead of mine.
 
 Within `/setup/install.ps1`, modify the Repository variables.
 ```posh
-$account = "jayharris"
+$account = "leonelgalan"
 $repo    = "dotfiles-windows"
 $branch  = "master"
 ```
@@ -108,14 +105,15 @@ iex ((new-object net.webclient).DownloadString('https://raw.github.com/$account/
 ## Feedback
 
 Suggestions/improvements are
-[welcome and encouraged](https://github.com/jayharris/dotfiles-windows/issues)!
+[welcome and encouraged](https://github.com/leonelgalan/dotfiles-windows/issues)!
 
-## Author
+## Original Author
 
-| [![twitter/jayharris](http://gravatar.com/avatar/1318668b99b2d5a3900f3f7758763a69?s=70)](http://twitter.com/jayharris "Follow @jayharris on Twitter") |
+| [![twitter/leonelgalan]https://s.gravatar.com/avatar/fd50f61387b63900335c8556f86237be?s=70)](http://twitter.com/leonelgalan "Follow @leonelgalan on Twitter") |
 |---|
-| [Jay Harris](http://twitter.com/jayharris/) |
+| [Leonel Galan](http://twitter.com/leonelgalan/) |
 
 ## Thanks to…
 
+* [jayharris](http://twitter.com/jayharris/) for his [dotfiles-windows](https://github.com/jayharris/dotfiles-windows) which this repository is forked after.
 * @[Mathias Bynens](http://mathiasbynens.be/) for his [OS X dotfiles](http://mths.be/dotfiles), which this repository is modeled after.
